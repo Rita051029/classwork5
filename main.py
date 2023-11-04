@@ -24,19 +24,26 @@ class Human:
             return
         self.job = Job(job_list)
 
-    def to_chill(self, House):
+    def to_chill(self):
         self.gladness = +10
         self.mess = +5
+
+    def to_clean(self):
+        self.mess = 0
+        self.gladness = -5
+
+    def to_repair(self):
+        self.car.strench = +100
+        self.money -= 50
+
+
+
 
 class House:
 
     def __init__(self):
         self.mess = 0
         self.food = 0
-
-    def to_clean(self, human):
-        self.mess = 0
-        self.gladness = -5
 
 
 
@@ -57,12 +64,6 @@ class Auto:
             print("The cat cannot move!")
             return False
 
-    def to_repair(self):
-        if self.consumption >= 0:
-            self.consumption = +100
-            return True
-        else:
-            return False
 
 class Job:
 
@@ -88,5 +89,4 @@ brands_of_car = {
     "Volvo":{"fuel": 80, "strength": 150, "consumption": 8},
     "Ferrari":{"fuel": 80, "strength": 120, "consumption": 14}
 }
-
 
